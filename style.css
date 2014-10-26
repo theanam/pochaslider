@@ -1,0 +1,40 @@
+@font-face{
+	font-family:'op-sans';
+	src:url('opensans.ttf') format('truetype'),
+	src:url('opensans.woff') format('woff');
+}
+body{
+	font-family:'op-sans',sans-serif;
+}
+/*Pocha slider main Presentation*/
+
+
+/*pocha slider sample css*/
+.slidercontainer{
+	position:relative;
+	width:100%;
+	text-align:center;
+	margin-top:150px;
+}
+.slide{
+	position:absolute;
+	transition:all 1s;
+	font-size:100px;
+	width:100%;
+	text-align:center;
+}
+.pochaslider-active{
+opacity:1;
+transform:scale(1);
+}
+.pochaslider-next{
+	transform:scale(0);
+	opacity:0;
+}
+.pochaslider-passed{
+	transform:scale(3);
+	opacity:0;
+}
+.pochaslider-idle{
+	opacity:0;
+}
