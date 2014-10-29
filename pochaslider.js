@@ -4,7 +4,8 @@
 		if(!params)
 			params = {};
 		var elements = $(this);
-		var stopped = false;
+		params.autoplay || (params.autoplay = true);
+		var stopped = !params.autoPlay;
 		var idle = params.idleClass || 'pochaslider-idle';
 		elements.addClass(idle);
 		if(elements.length>1){
@@ -42,14 +43,18 @@
 				var actv = elements.filter(active);
 				var nextc = elements.filter(next);
 				var passd = elements.filter(passed);
-				var psdnxt = (elements.index(passd)-1>0)?(elements.index(passd)-1):(elements.length-1);
-				$(psdnxt).removeClass(idle).addClass(params.passedClass);
+				var psdnxt = (elements.index(passd)-1>=0)?(elements.index(passd)-1):(elements.length-1);
+				// console.log(actv);
+				// console.log(nextc);
+				// console.log(passd);
+				// console.log(psdnxt);
+				$(elements[psdnxt]).removeClass(idle).addClass(params.passedClass);
 				actv.removeClass(params.activeClass).addClass(params.nextClass);
 				nextc.removeClass(params.nextClass).addClass(idle);
 				passd.addClass(params.activeClass).removeClass(params.passedClass);
 			}
 			var delay = $(elements.filter(active)[0]).data('stay') || params.delay || 1000;
-			setTimeout(gotoNextSlide,delay);
+			!stopped && setTimeout(gotoNextSlide,delay);
 		}
 		var slideControl = {
 			next : function(){gotoNextSlide(1)},
