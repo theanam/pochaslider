@@ -56,6 +56,21 @@
 			var delay = $(elements.filter(active)[0]).data('stay') || params.delay || 1000;
 			!stopped && setTimeout(gotoNextSlide,delay);
 		}
+		//keyboard navigation
+		$(document).keyup(function(e){
+			if(params.keyboardNavigation){
+			if(e.keyCode == 39 || e.keyCode == 32){ // space or keyboardnext
+				//next Slide
+				e.preventDefault();
+				gotoNextSlide(1);
+			}
+			else if(e.keyCode == 37){ // keyboardprevious
+				//previous slide
+				e.preventDefault();
+				gotoPreviousSlide();
+			}
+			}
+		});
 		var slideControl = {
 			next : function(){gotoNextSlide(1)},
 			previous : function(){gotoPreviousSlide()},
