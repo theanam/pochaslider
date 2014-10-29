@@ -57,7 +57,7 @@
 			!stopped && setTimeout(gotoNextSlide,delay);
 		}
 		//keyboard navigation
-		$(document).keyup(function(e){
+		$(document).keydown(function(e){
 			if(params.keyboardNavigation){
 			if(e.keyCode == 39 || e.keyCode == 32){ // space or keyboardnext
 				//next Slide
