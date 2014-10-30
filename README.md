@@ -10,6 +10,8 @@
 * Per element timing
 * Per element effect
 * Easily customizable
+* keyboard navigation
+* Presentation mode (can be used as presentation)
 * Responsive as you like
 * takes five minute to learn and start working
 * Small codebase, easily customizable
@@ -47,7 +49,7 @@ okay not if you still don't get it, you'll understand from the sample code below
 Our objective is to *create a simple text effect, every single item will zoom in hold for one second, and then burst out (zoom in and vanish). we also want the __fourth__ item to stay a little bit longer, 2 seconds instead of 1.* Let's create it.
 
 So, we need to create the markup first:
-
+````html
 	<div class="slidercontainer">
 		<div class="slide">Pocha</div>
 		<div class="slide">Slider</div>
@@ -55,12 +57,12 @@ So, we need to create the markup first:
 		<div class="slide" data-stay="2000">Really</div>
 		<div class="slide">Awesome</div>
 	</div>
-
+````
 so, the first thing you learned about Pocha slider is, you can specify per element staying time by passing the element a data attribute `data-stay`, this takes value in milleseconds. so 2000 = 2 seconds. and the second thing to notice that, you need to have the same class (or something you can use to select them all with jQuery).
 
 okay, now you need to add some magic to it with CSS3, that's where all the effects would be. Write the CSS below:
  
-
+````css
 	.slidercontainer{
 		position:relative; /*because elements inside would be position:absolute*/
 	}
@@ -89,21 +91,22 @@ okay, now you need to add some magic to it with CSS3, that's where all the effec
 		/*style for the idle state, something that won't interrupt the overall look, may be different as well*/
 		opacity:0;
 	}
+````
 
 Now that the stylesheet is ready, you need to add **jQuery** and **pochaslider.min.js** in your document. Let's do it.
-
+````html
 	<script src = "jquery.min.js"></script>
 	<script src = "pochaslider.min.js"></script>
-
+````
 now there's only one step left, initializing the slider, that's also simple:
-
+````html
 	<script>
 	var options = {
 					delay:1000 //slider options
 				}
 		$('.slides').pochaSlider(options);
 	</script>
-
+````
 yay! you have done it! if you've successfully followed all the instructions, you'll get something like [this](http://demo.anam.co/pochaslider1)
 
 Other options that you can specify are : `activeClass` , `nextClass` , `passedClass` and `idleClass` , all these options take a string that represents the class added by **pocha Slider** for animations, I've used all the default values in the sample code, Look at the [**CSS**](##the-css-) we've just created, youl'll find the defaults.

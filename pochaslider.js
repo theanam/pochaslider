@@ -4,9 +4,11 @@
 		if(!params)
 			params = {};
 		var elements = $(this);
-		params.autoPlay || (params.autoPlay = true);
+		params.autoPlay || (params.autoPlay==false) || (params.autoPlay = true);
 		var stopped = !params.autoPlay;
+		console.log(stopped);
 		var idle = params.idleClass || 'pochaslider-idle';
+		params.pauseOnHover || (params.pauseOnHover == false) || (params.pauseOnHover = false);
 		elements.addClass(idle);
 		if(elements.length>1){
 			params.activeClass || (params.activeClass = 'pochaslider-active');
@@ -15,10 +17,12 @@
 			var active = "."+params.activeClass;
 			var next = "." + params.nextClass;
 			var passed = "." + params.passedClass;
+			var paused = false;
 			$(elements[0]).addClass(params.activeClass).removeClass(idle);
 			$(elements[1]).addClass(params.nextClass).removeClass(idle);
 			$(elements[elements.length-1]).addClass(params.passedClass).removeClass(idle);
 			var gotoNextSlide = function(state){
+				if(!paused){
 				//Step 0: set last passed item as idle
 				elements.filter(passed).addClass(idle).removeClass(params.passedClass);
 				//step 1: change active to passed
@@ -36,8 +40,10 @@
 				//Step 4: set up the next item
 				$(elements[nxtindex]).addClass(params.nextClass).removeClass(idle);
 				//see if the element has custom delay
+				}
 				var delay = $(elements.filter(active)[0]).data('stay') || params.delay || 1000; //default 1s
 				state || stopped || setTimeout(gotoNextSlide,delay);
+
 			}
 			var gotoPreviousSlide = function(){
 				var actv = elements.filter(active);
@@ -58,7 +64,7 @@
 		}
 		//keyboard navigation
 		$(document).keydown(function(e){
-			if(params.keyboardNavigation){
+			if(params.keyboardNavigation && params.keyboardNavigation == true){
 			if(e.keyCode == 39 || e.keyCode == 32){ // space or keyboardnext
 				//next Slide
 				e.preventDefault();
@@ -71,11 +77,22 @@
 			}
 			}
 		});
+		//Pause on hover
+		elements.mouseenter(function(e){
+			//stop the animation if necessary
+			e.stopImmediatePropagation();
+			params.pauseOnHover && (paused = true); //get the stopped flag to true
+		}).mouseleave(function(e){
+			//replay the animation if required
+			e.stopImmediatePropagation();
+			params.pauseOnHover && (paused = false);
+		});
 		var slideControl = {
 			next : function(){gotoNextSlide(1)},
 			previous : function(){gotoPreviousSlide()},
 			stop : function(){stopped=true},
-			play : function(){if(stopped){stopped=false;gotoNextSlide()}}
+			pause : function(){paused=true},
+			play : function(){if(stopped){stopped=false;gotoNextSlide()};if(paused){paused=false}}
 		};
 		return slideControl;
 	}
