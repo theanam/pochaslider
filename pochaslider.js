@@ -4,7 +4,7 @@
 		if(!params)
 			params = {};
 		var elements = $(this);
-		params.autoplay || (params.autoplay = true);
+		params.autoPlay || (params.autoPlay = true);
 		var stopped = !params.autoPlay;
 		var idle = params.idleClass || 'pochaslider-idle';
 		elements.addClass(idle);
