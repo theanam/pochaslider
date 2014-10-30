@@ -81,11 +81,11 @@
 		elements.mouseenter(function(e){
 			//stop the animation if necessary
 			e.stopImmediatePropagation();
-			params.pauseOnHover && (paused = true); //get the stopped flag to true
+			params.pauseOnHover && (params.autoPlay ==true) && (paused = true); //get the stopped flag to true
 		}).mouseleave(function(e){
 			//replay the animation if required
 			e.stopImmediatePropagation();
-			params.pauseOnHover && (paused = false);
+			params.pauseOnHover && (params.autoPlay ==true) && (paused = false);
 		});
 		var slideControl = {
 			next : function(){gotoNextSlide(1)},

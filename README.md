@@ -109,9 +109,47 @@ now there's only one step left, initializing the slider, that's also simple:
 ````
 yay! you have done it! if you've successfully followed all the instructions, you'll get something like [this](http://demo.anam.co/pochaslider1)
 
-Other options that you can specify are : `activeClass` , `nextClass` , `passedClass` and `idleClass` , all these options take a string that represents the class added by **pocha Slider** for animations, I've used all the default values in the sample code, Look at the [**CSS**](##the-css-) we've just created, youl'll find the defaults.
+####Options :
 
+Options are passed using a **JSON** object, that may include these following properties. 
 
+##### delay (number) :
+Specifies the time each element will stay (in milleseconds). default : `1000` (1 Second)
+##### activeClass (String) : 
+the CSS class added to the element at active state. default : `pochaslider-active`
+##### nextClass (String) :
+the CSS class added to the element to be active in the next sequence (the next slide).useful for determining the initial state of animation before coming in. default : `pochaslider-next`
+##### passedClass (String) :
+the CSS class added to the element that was active in the last iteration. useful to determinte behavior how elements will go away. default : `pochaslider-passed`
+##### idleClass (String) : 
+The CSS class added to any other element that's not active, passed or next. can be useful to hide the rest of the slides. default : `pochaslider-idle`
+##### autoPlay (boolean) : 
+if set true, the slides will change automatically. default : `true`
+##### keyboardNavigation (boolean) :
+if set true, the slides can be changed using the keyboard, button <kbd>&larr;</kbd> <kbd>&rarr;</kbd> and <kbd>spacebar</kbd> . default : `false`
+##### pauseOnHover (boolean) : 
+if set true, autoplay will pause if the user has autoplay enabled. default : `false`
+
+####Controlling the behavior at runtime :
+One thing to notice that pochaSlider doesn't return the same jQuery object. It returns a control object instead. So, you can't do something like `$('.slide').pochaSlider().hide();` but yeah, who wants to hide a brand new initialized slider (lol) . but the control object that it retuens, is useful to control the overall behavior of the slider. to get the control object, assign it to a variable like this : 
+
+````js
+	var slider = $('.slide').pochaSlider();
+	//do something with the slider object, for example: pause it.
+	slider.pause() // pause the animation 
+````
+control functions are : 
+
+##### play() :
+plays a stopped or paused slideshow.
+##### pause() :
+pauses a slideshow. (Immediately stops the animations).
+##### stop() :
+stops the animation after the last animation is complete.
+##### next() :
+go to the next Slide
+##### previous() : 
+go to the previous Slide
 ###Footnote
 
 * The name came from a Bangla word 'pocha' that means rotten/bad .
