@@ -150,6 +150,8 @@ stops the animation after the last animation is complete.
 go to the next Slide
 ##### previous() : 
 go to the previous Slide
+##### goTo(index) :
+go to the slide with given index (starting from 0)
 ###Footnote
 
 * The name came from a Bangla word 'pocha' that means rotten/bad .

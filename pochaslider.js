@@ -23,23 +23,23 @@
 			$(elements[elements.length-1]).addClass(params.passedClass).removeClass(idle);
 			var gotoNextSlide = function(state){
 				if(!paused){
-				//Step 0: set last passed item as idle
-				elements.filter(passed).addClass(idle).removeClass(params.passedClass);
-				//step 1: change active to passed
-				elements.filter(active).removeClass(params.activeClass).addClass(params.passedClass);
-				//Step 2: Set up what's gonna come next
-				var nxtindex = elements.index($(next));
-				if(nxtindex+1>elements.length-1){
-					nxtindex = 0
-				}
-				else{
-					nxtindex = nxtindex+1;
-				}
-				//Step 3: set the next item as active
-				elements.filter(next).addClass(params.activeClass).removeClass(params.nextClass);
-				//Step 4: set up the next item
-				$(elements[nxtindex]).addClass(params.nextClass).removeClass(idle);
-				//see if the element has custom delay
+					//Step 0: set last passed item as idle
+					elements.filter(passed).addClass(idle).removeClass(params.passedClass);
+					//step 1: change active to passed
+					elements.filter(active).removeClass(params.activeClass).addClass(params.passedClass);
+					//Step 2: Set up what's gonna come next
+					var nxtindex = elements.index($(next));
+					if(nxtindex+1>elements.length-1){
+						nxtindex = 0
+					}
+					else{
+						nxtindex = nxtindex+1;
+					}
+					//Step 3: set the next item as active
+					elements.filter(next).addClass(params.activeClass).removeClass(params.nextClass);
+					//Step 4: set up the next item
+					$(elements[nxtindex]).addClass(params.nextClass).removeClass(idle);
+					//see if the element has custom delay
 				}
 				var delay = $(elements.filter(active)[0]).data('stay') || params.delay || 1000; //default 1s
 				state || stopped || setTimeout(gotoNextSlide,delay);
@@ -61,7 +61,28 @@
 			}
 			var delay = $(elements.filter(active)[0]).data('stay') || params.delay || 1000;
 			!stopped && setTimeout(gotoNextSlide,delay);
+			//gotoSlide implimentation
+			var gotoSlide = function(index){
+				if(index<elements.length-1 && index>=0){ //valid index
+					var actel = $(elements[index]);
+					var nxtindx = ((index+1)<elements.length)?(index+1):0;
+					var nxtel = $(elements[nxtindx]);
+					var preindx = (index-1>=0)?(index-1):(elements.length-1);
+					var prevel = $(elements[preindx]);
+					//make everything idle
+					$(active).removeClass(params.activeClass).addClass(idle);
+					$(next).removeClass(params.nextClass).addClass(idle);
+					$(passed).removeClass(params.passedClass).addClass(idle);
+					actel.addClass(params.activeClass).removeClass(idle);
+					nxtel.addClass(params.nextClass).removeClass(idle);
+					prevel.addClass(params.passedClass).removeClass(idle);
+				}
+				else{
+					return false;
+				}
+			}
 		}
+		
 		//keyboard navigation
 		$(document).keydown(function(e){
 			if(params.keyboardNavigation && params.keyboardNavigation == true){
@@ -92,6 +113,7 @@
 			previous : function(){gotoPreviousSlide()},
 			stop : function(){stopped=true},
 			pause : function(){paused=true},
+			goTo : function(index){gotoSlide(index)},
 			play : function(){if(stopped){stopped=false;gotoNextSlide()};if(paused){paused=false}}
 		};
 		return slideControl;
