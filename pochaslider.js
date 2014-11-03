@@ -6,7 +6,7 @@
 		var elements = $(this);
 		params.autoPlay || (params.autoPlay==false) || (params.autoPlay = true);
 		var stopped = !params.autoPlay;
-		console.log(stopped);
+		// console.log(stopped);
 		var idle = params.idleClass || 'pochaslider-idle';
 		params.pauseOnHover || (params.pauseOnHover == false) || (params.pauseOnHover = false);
 		elements.addClass(idle);
@@ -42,6 +42,8 @@
 					//see if the element has custom delay
 				}
 				var delay = $(elements.filter(active)[0]).data('stay') || params.delay || 1000; //default 1s
+				// console.log(delay);
+				(delay == "-1") && (stopped = true); // if delay is -1, stop the slideshow
 				state || stopped || setTimeout(gotoNextSlide,delay);
 
 			}

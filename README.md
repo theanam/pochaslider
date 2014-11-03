@@ -58,7 +58,11 @@ So, we need to create the markup first:
 		<div class="slide">Awesome</div>
 	</div>
 ````
-so, the first thing you learned about Pocha slider is, you can specify per element staying time by passing the element a data attribute `data-stay`, this takes value in milleseconds. so 2000 = 2 seconds. and the second thing to notice that, you need to have the same class (or something you can use to select them all with jQuery).
+so, the first thing you learned about Pocha slider is, you can specify per element staying time by passing the element a data attribute `data-stay`, this takes value in milleseconds. so 2000 = 2 seconds. 
+
+>if `data-stay` is `-1` , then the slider will stop at that slide. and you can then play it again with the `play()` method.
+
+ and the second thing to notice that, you need to have the same class (or something you can use to select them all with jQuery).
 
 okay, now you need to add some magic to it with CSS3, that's where all the effects would be. Write the CSS below:
  
