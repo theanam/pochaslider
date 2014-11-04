@@ -1,7 +1,7 @@
 ![Pocha Slider](http://demo.anam.co/pochaslider/logo.png)
 
 #jQuery Pocha Slider : A highly customizable miltipurpose Slider / Presentation framework
-
+######A new slider for everyone
 ****
 
 #####yet another slider? Check out [This demo](http://demo.anam.co/pochaslider) to find out why.
