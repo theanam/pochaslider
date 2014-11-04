@@ -1,4 +1,6 @@
-#jQuery Pocha Slider : A highly customizable miltipurpose Slider
+![Pocha Slider](http://demo.anam.co/pochaslider/logo.png)
+
+#jQuery Pocha Slider : A highly customizable miltipurpose Slider / Presentation framework
 
 ****
 
@@ -11,8 +13,8 @@
 * Per element effect
 * Easily customizable
 * keyboard navigation
-* Presentation mode (can be used as presentation)
-* Responsive as you like
+* Presentation mode (can be used as presentation framework as well)
+* Responsive on demand
 * takes five minute to learn and start working
 * Small codebase, easily customizable
 * Lets you use your Existing CSS skills.
@@ -164,6 +166,7 @@ go to the slide with given index (starting from 0)
 * You can share your creations with pocha slider by tweeting [@mranam](http://twitter.com/mranam) and I'll include them here.
 * You can request features with the issue tracker of this repository.
 * Pocha Slider is developed and maintained by [Anam Ahmed](http://anam.co)
+* Logo credit: [Ahmad Firoz](https://www.behance.net/ahmadfiroz)
 
 
 
