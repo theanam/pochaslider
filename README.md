@@ -1,12 +1,12 @@
 ![Pocha Slider](http://demo.anam.co/pochaslider/logo.png)
 
-#jQuery Pocha Slider : A highly customizable multipurpose Slider / Presentation framework
-######A new slider for everyone
+# jQuery Pocha Slider : A highly customizable multipurpose Slider / Presentation framework
+###### A new slider for everyone
 ****
 
-#####yet another slider? Check out [This demo](http://demo.anam.co/pochaslider) to find out why.
+##### yet another slider? Check out [This demo](http://demo.anam.co/pochaslider) to find out why.
 
-###Features:
+### Features:
 
 * pure css3 transition based effects
 * Per element timing
@@ -19,7 +19,7 @@
 * Small codebase, easily customizable
 * Lets you use your Existing CSS skills.
 
-###How it works
+### How it works
 
 **pocha slider** is a one file slider. there's only one file : `pochaslider.js` or you can use `pochaslider.min.js` , as It's a jQuery plugin, you must have jQuery included as well. 
 
@@ -46,7 +46,7 @@ and the third iteration would be:
 and so on...
 okay not if you still don't get it, you'll understand from the sample code below.
 
-###Sample Implementation
+### Sample Implementation
 
 Our objective is to *create a simple text effect, every single item will zoom in hold for one second, and then burst out (zoom in and vanish). we also want the __fourth__ item to stay a little bit longer, 2 seconds instead of 1.* Let's create it.
 
@@ -62,7 +62,7 @@ So, we need to create the markup first:
 ````
 so, the first thing you learned about Pocha slider is, you can specify per element staying time by passing the element a data attribute `data-stay`, this takes value in milleseconds. so 2000 = 2 seconds. 
 
->if `data-stay` is `-1` , then the slider will stop at that slide. and you can then play it again with the `play()` method.
+> if `data-stay` is `-1` , then the slider will stop at that slide. and you can then play it again with the `play()` method.
 
  and the second thing to notice that, you need to have the same class (or something you can use to select them all with jQuery).
 
@@ -115,7 +115,7 @@ now there's only one step left, initializing the slider, that's also simple:
 ````
 yay! you have done it! if you've successfully followed all the instructions, you'll get something like [this](http://demo.anam.co/pochaslider1)
 
-####Options :
+#### Options :
 
 Options are passed using a **JSON** object, that may include these following properties. 
 
@@ -136,7 +136,7 @@ if set true, the slides can be changed using the keyboard, button <kbd>&larr;</k
 ##### pauseOnHover (boolean) : 
 if set true, autoplay will pause if the user has autoplay enabled. default : `false`
 
-####Controlling the behavior at runtime :
+#### Controlling the behavior at runtime :
 One thing to notice that pochaSlider doesn't return the same jQuery object. It returns a control object instead. So, you can't do something like `$('.slide').pochaSlider().hide();` but yeah, who wants to hide a brand new initialized slider (lol) . but the control object that it retuens, is useful to control the overall behavior of the slider. to get the control object, assign it to a variable like this : 
 
 ````js
